@@ -58,6 +58,7 @@ import { LoggersInjectionToken } from "./tokens/logger.injection-token";
 import { UUID_PROVIDER } from "./providers/uuid.provider";
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { MasterDetailsComponent } from './cv/master-details/master-details.component';
+import { MdComponent } from './cv/md/md.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { MasterDetailsComponent } from './cv/master-details/master-details.compo
     ProductsComponent,
     WeekTodoComponent,
     MasterDetailsComponent,
+    MdComponent,
   ],
   imports: [
     BrowserModule,
