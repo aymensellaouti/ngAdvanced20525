@@ -55,6 +55,7 @@ import { FakeCvService } from "./cv/services/fake-cv.service";
 import { LoggerService } from "./services/logger.service";
 import { Logger2Service } from "./services/logger2.service";
 import { LoggersInjectionToken } from "./tokens/logger.injection-token";
+import { UUID_PROVIDER } from "./providers/uuid.provider";
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { LoggersInjectionToken } from "./tokens/logger.injection-token";
   ],
   providers: [
     AuthInterceptorProvider,
+    UUID_PROVIDER,
     {
       provide: CvService,
       useClass: CONSTANTES.env == 'dev' ? FakeCvService : CvService,
