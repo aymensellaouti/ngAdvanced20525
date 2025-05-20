@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { Cv } from "../model/cv";
 import { LoggerService } from "../../services/logger.service";
 import { ToastrService } from "ngx-toastr";
 import { CvService } from "../services/cv.service";
 import { EMPTY, Observable, catchError, of } from "rxjs";
+import { LoggersInjectionToken } from "src/app/tokens/logger.injection-token";
 @Component({
   selector: "app-cv",
   templateUrl: "./cv.component.html",
@@ -16,7 +17,8 @@ export class CvComponent {
   date = new Date();
 
   constructor(
-    private logger: LoggerService,
+    @Inject(LoggersInjectionToken)
+    private loggers: LoggerService[],
     private toastr: ToastrService,
     private cvService: CvService
   ) {
@@ -31,7 +33,7 @@ export class CvComponent {
           Veuillez contacter l'admin.`);
       },
     });
-    this.logger.logger("je suis le cvComponent");
+    this.loggers.forEach( logger => logger.logger("je suis le cvComponent"));
     this.toastr.info("Bienvenu dans notre CvTech");
   }
   onForwardCv(cv: Cv) {
