@@ -56,6 +56,7 @@ import { LoggerService } from "./services/logger.service";
 import { Logger2Service } from "./services/logger2.service";
 import { LoggersInjectionToken } from "./tokens/logger.injection-token";
 import { UUID_PROVIDER } from "./providers/uuid.provider";
+import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { UUID_PROVIDER } from "./providers/uuid.provider";
     RhComponent,
     UserListComponent,
     ProductsComponent,
+    WeekTodoComponent,
   ],
   imports: [
     BrowserModule,
