@@ -57,6 +57,7 @@ import { Logger2Service } from "./services/logger2.service";
 import { LoggersInjectionToken } from "./tokens/logger.injection-token";
 import { UUID_PROVIDER } from "./providers/uuid.provider";
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
+import { MasterDetailsComponent } from './cv/master-details/master-details.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
     UserListComponent,
     ProductsComponent,
     WeekTodoComponent,
+    MasterDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -117,10 +119,10 @@ import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
   providers: [
     AuthInterceptorProvider,
     UUID_PROVIDER,
-    {
-      provide: CvService,
-      useClass: CONSTANTES.env == 'dev' ? FakeCvService : CvService,
-    },
+    // {
+    //   provide: CvService,
+    //   useClass: CONSTANTES.env == 'dev' ? FakeCvService : CvService,
+    // },
     {
       provide: LoggersInjectionToken,
       useClass: Logger2Service,

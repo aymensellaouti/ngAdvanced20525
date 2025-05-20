@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ApplicationRef, Component, OnInit } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,19 +18,28 @@ export class DetailsCvComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
-    public authService: AuthService
+    public authService: AuthService,
+    public aRef: ApplicationRef
   ) {}
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.cvService.getCvById(+id).subscribe({
-        next: (cv) => {
-          this.cv = cv;
-        },
-        error: (e) => {
-          this.router.navigate([APP_ROUTES.cv]);
-        },
-      });
+
+    this.activatedRoute.params.subscribe(
+      (params) => {
+        this.cvService.getCvById(params['id']).subscribe({
+          next: (cv) => {
+            console.log({ id: params['id'] });
+            this.cv = cv;
+            //  this.aRef.tick()
+          },
+          error: (e) => {
+            this.router.navigate([APP_ROUTES.cv]);
+          },
+        });
+      }
+    )
+
   }
   deleteCv(cv: Cv) {
     this.cvService.deleteCvById(cv.id).subscribe({

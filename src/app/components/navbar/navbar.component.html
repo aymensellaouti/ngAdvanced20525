@@ -2,9 +2,6 @@
   <div class="container-fluid">
     <a
       class="navbar-brand"
-      [routerLink]="['']"
-      [routerLinkActiveOptions]="{ exact: true }"
-      routerLinkActive="active text-primary"
       >cvStartingAdvProject</a
     >
     <button
@@ -34,6 +31,13 @@
           [routerLink]="['cv']"
           routerLinkActive="active text-primary"
           >Cv</a
+        >
+        <a
+          class="nav-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLink]="['cv', 'list']"
+          routerLinkActive="active text-primary"
+          >Master Details</a
         >
         <a
           *ngIf="authService.isAuthenticated()"

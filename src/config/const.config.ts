@@ -1,4 +1,4 @@
 export const CONSTANTES = {
   defaultImage: "cv.png",
-  env: "dev",
+  env: "prod",
 };
