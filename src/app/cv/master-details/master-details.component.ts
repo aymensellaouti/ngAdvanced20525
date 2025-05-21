@@ -16,7 +16,11 @@ export class MasterDetailsComponent {
   router = inject(Router);
   acr = inject(ActivatedRoute);
   constructor() {
-    this.cvs = this.acr.snapshot.data['cvs']
+    this.cvs = this.acr.snapshot.data['cvs'];
+    this.cvService.selectedCv$.subscribe({
+        next : (cv) => this.details(cv)
+      }
+    )
     // this.cvService.getCvs().subscribe({
     //   next: (cvs) => {
     //     this.cvs = cvs;
