@@ -20,10 +20,15 @@ export class AuthService {
 
   // Flux isLoggedIn$ Boolean informant si on est authentifié ou non
   // Flux isLoggedOut$ Boolean informant si on est non authentifié ou non
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // A la construction de la classe
+    // Je vérifie le localStorage
+      // si user  => j'ajoute le user dans le flux des users
+  }
 
   login(credentials: CredentialsDto): Observable<LoginResponseDto> {
     // Garder la trace du user connecté au chargement
+    // A la connexion on doit sauvgarder le user fel localstorage
     return this.http.post<LoginResponseDto>(API.login, credentials);
   }
 
@@ -45,5 +50,6 @@ export class AuthService {
 
   logout() {
     this.clearToken();
+    // Je gére les flux je mets null dans le flux des connectedUser
   }
 }

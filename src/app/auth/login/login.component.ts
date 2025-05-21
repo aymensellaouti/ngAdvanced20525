@@ -17,6 +17,7 @@ export class LoginComponent {
     private toastr: ToastrService
   ) {}
   login(credentials: CredentialsDto) {
+    // admin@gmail.com 0000
     this.authService.login(credentials).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.id);
