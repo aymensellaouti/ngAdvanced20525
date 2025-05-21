@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { APP_ROUTES } from '../../../config/routes.config';
 import { AuthService } from '../../auth/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-details-cv',
@@ -12,7 +13,10 @@ import { AuthService } from '../../auth/services/auth.service';
   styleUrls: ['./details-cv.component.css'],
 })
 export class DetailsCvComponent implements OnInit {
-  cv: Cv | null = null;
+  cv$: Observable<Cv> = this.cvService.getCvById(
+    this.activatedRoute.snapshot.params['id']
+  );
+
   constructor(
     private cvService: CvService,
     private router: Router,
@@ -23,23 +27,21 @@ export class DetailsCvComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.params['id'];
-
-    this.activatedRoute.params.subscribe(
-      (params) => {
-        this.cvService.getCvById(params['id']).subscribe({
-          next: (cv) => {
-            console.log({ id: params['id'] });
-            this.cv = cv;
-            //  this.aRef.tick()
-          },
-          error: (e) => {
-            this.router.navigate([APP_ROUTES.cv]);
-          },
-        });
-      }
-    )
-
+    // const id = ;
+    // this.activatedRoute.params.subscribe(
+    //   (params) => {
+    // .subscribe({
+    //   next: (cv) => {
+    //     console.log({ id: params['id'] });
+    //     this.cv = cv;
+    //     //  this.aRef.tick()
+    //   },
+    //   error: (e) => {
+    //     this.router.navigate([APP_ROUTES.cv]);
+    //   },
+    // });
+    // }
+    // )
   }
   deleteCv(cv: Cv) {
     this.cvService.deleteCvById(cv.id).subscribe({
