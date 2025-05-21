@@ -15,7 +15,7 @@ import { Observable, switchMap, tap } from 'rxjs';
 export class DetailsCvComponent implements OnInit {
   cv$: Observable<Cv> = this.activatedRoute
   .params.pipe(
-    //tap(params => console.log(params)),
+    tap(params => console.log(params)),
     switchMap((params) => this.cvService.getCvById(params['id']))
   );
   constructor(
