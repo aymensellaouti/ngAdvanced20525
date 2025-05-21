@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { Observable, map, startWith, timer } from "rxjs";
+import { Observable, map, startWith, take, timer } from "rxjs";
 
 @Component({
   selector: 'app-slider',
@@ -8,6 +8,7 @@ import { Observable, map, startWith, timer } from "rxjs";
 })
 export class SliderComponent {
   @Input() awaitTime = 1500;
+  @Input() maxImage = 10;
   @Input() imagePaths = [
     'as.jpg',
     'cv.png',
@@ -20,7 +21,8 @@ export class SliderComponent {
   // path1 path2 path3 ... pathFin path1
   paths$: Observable<string> = timer(0, this.awaitTime).pipe(
     // 0, 1, 2, 3 ......
-    map((index) => this.imagePaths[index % this.imagePaths.length])
+    map((index) => this.imagePaths[index % this.imagePaths.length]),
     // path1 path2 path3 ... pathFin path1
+    take(this.maxImage)
   );
 }

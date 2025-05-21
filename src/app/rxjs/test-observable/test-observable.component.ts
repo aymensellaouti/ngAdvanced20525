@@ -48,7 +48,8 @@ export class TestObservableComponent {
         // 5 4 3 2 1
         map(value => value * 3),
         // 15 12 9 6 3,
-
+        filter(value => value % 2 == 0)
+        // 12 6
       )
       .subscribe({
         next: (val) => {

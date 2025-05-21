@@ -34,6 +34,9 @@ export class CvComponent {
           Attention!! Les données sont fictives, problème avec le serveur.
           Veuillez contacter l'admin.`);
       },
+      complete: () => {
+        toastr.success('Kamelna')
+      }
     });
     this.loggers.forEach( logger => logger.logger("je suis le cvComponent"));
     this.toastr.info("Bienvenu dans notre CvTech");
