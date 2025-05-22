@@ -3,4 +3,5 @@ export const CONSTANTES = {
   env: 'prod',
   tokenKey: 'token',
   connectedUser: 'connectedUser',
+  addSavedForm: 'addSavedForm',
 };
