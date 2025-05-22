@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { APP_ROUTES } from 'src/config/routes.config';
 import { Cv } from '../model/cv';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-add-cv',
@@ -18,7 +19,7 @@ export class AddCvComponent {
   toastr = inject(ToastrService);
   form = this.formBuilder.group(
     {
-      name: ['', Validators.required],
+      name: ['', Validators.required, []],
       firstname: ['', Validators.required],
       path: [''],
       job: ['', Validators.required],
@@ -27,6 +28,7 @@ export class AddCvComponent {
         {
           validators: [Validators.required, Validators.pattern('[0-9]{8}')],
           asyncValidators: [],
+          updateOn: 'submit'
         },
       ],
       age: [
@@ -43,7 +45,16 @@ export class AddCvComponent {
       updateOn: 'change',
     }
   );
-  constructor() {}
+  constructor() {
+    this.age.valueChanges.pipe(
+      tap(
+        (age) => {
+          if (age < 18) this.path?.disable();
+          else this.path?.enable()
+        }
+      )
+    ).subscribe();
+  }
   addCv() {
     this.cvService.addCv(this.form.value as Cv).subscribe({
       next: () => {

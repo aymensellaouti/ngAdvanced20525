@@ -21,7 +21,11 @@ export class MasterDetailsComponent {
     this.cvService.selectedCv$
     .pipe(takeUntilDestroyed())
     .subscribe({
-        next : (cv) => this.details(cv)
+        next : (cv) => this.details(cv),
+        // complete: () => {
+        //   console.log('Oufinachhhhhh ???!!');
+
+        // }
       }
     )
     // this.cvService.getCvs().subscribe({
