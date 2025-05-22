@@ -17,6 +17,7 @@ import { MasterDetailsComponent } from "./cv/master-details/master-details.compo
 //import { MdComponent } from "./cv/md/md.component";
 import { cvsResolver } from "./cv/resolver/cvs.resolver";
 import { canLeaveGuard } from "./guard/can-leave.guard";
+import { ProductsComponent } from "./products/products.component";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -39,6 +40,7 @@ const routes: Route[] = [
       },
     ],
   },
+  {path: APP_ROUTES.products, component: ProductsComponent},
   {
     path: APP_ROUTES.cv,
     children: [
