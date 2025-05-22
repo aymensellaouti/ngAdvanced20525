@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from "@angular/core";
-import { Observable, Subscription, filter, map } from "rxjs";
+import { Observable, Subject, Subscription, filter, map, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
@@ -7,9 +7,11 @@ import { ToastrService } from "ngx-toastr";
   templateUrl: "./test-observable.component.html",
   styleUrls: ["./test-observable.component.css"],
 })
-export class TestObservableComponent {
+export class TestObservableComponent implements OnDestroy {
   firstObservable$: Observable<number>;
   counter = 5;
+  mySubscription = new Subscription();
+  ieziSakerna = new Subject();
   constructor(private toaster: ToastrService) {
     /**
      * Flux d'un compte à rebours de 5 à 1
@@ -28,22 +30,24 @@ export class TestObservableComponent {
     /**
      * Une inscription
      */
-    this.firstObservable$.subscribe({
+    this.firstObservable$
+    .pipe(takeUntil(this.ieziSakerna))
+    .subscribe({
       next: (valeurJdida) => console.log(valeurJdida),
     });
   /**
      * Une inscription
      */
-    this.firstObservable$.subscribe({
+    this.mySubscription.add(this.firstObservable$.subscribe({
       next: (valeurJdida) => this.counter = valeurJdida,
-    });
+    }));
 
 
     // setTimeout(() => {
       /**
        * Une inscription
        */
-      this.firstObservable$
+      this.mySubscription.add(this.firstObservable$
       .pipe(
         // 5 4 3 2 1
         map(value => value * 3),
@@ -58,7 +62,12 @@ export class TestObservableComponent {
         complete: () => {
           toaster.error('BOOOOM!!!!!!');
         },
-      });
+      }));
     // },3000)
+  }
+  ngOnDestroy(): void {
+    this.mySubscription.unsubscribe();
+    this.ieziSakerna.next('');
+    this.ieziSakerna.complete();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +18,9 @@ export class MasterDetailsComponent {
   acr = inject(ActivatedRoute);
   constructor() {
     this.cvs = this.acr.snapshot.data['cvs'];
-    this.cvService.selectedCv$.subscribe({
+    this.cvService.selectedCv$
+    .pipe(takeUntilDestroyed())
+    .subscribe({
         next : (cv) => this.details(cv)
       }
     )
