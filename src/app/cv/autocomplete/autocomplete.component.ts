@@ -12,12 +12,16 @@ import { Cv } from "../model/cv";
 export class AutocompleteComponent {
   formBuilder = inject(FormBuilder);
   cvService = inject(CvService);
-  //cvs$!: Observable<Cv[]> = this.search.valueChanges;
+  form = this.formBuilder.group({ search: [""] });
   get search(): AbstractControl {
     return this.form.get("search")!;
   }
-  form = this.formBuilder.group({ search: [""] });
+  cvs$: Observable<Cv[]> = this.search.valueChanges.pipe(
+    debounceTime(500),
+    distinctUntilChanged(),
+    switchMap(searchName => this.cvService.selectByName(searchName))
+  );
   constructor() {
-    this.search.valueChanges.subscribe({next:(value) => console.log(value)});
+    //this.search.valueChanges.subscribe({next:(value) => console.log(value)});
   }
 }
