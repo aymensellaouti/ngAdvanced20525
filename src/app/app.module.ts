@@ -22,7 +22,6 @@ import { DetailsCvComponent } from "./cv/details-cv/details-cv.component";
 import { NgstyleComponent } from "./directives/ngstyle/ngstyle.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { NgclassComponent } from "./directives/ngclass/ngclass.component";
-import { TodoComponent } from "./todo/todo/todo.component";
 
 import { HighlightDirective } from "./directives/highlight.directive";
 import { RainbowDirective } from "./directives/rainbow.directive";
@@ -49,16 +48,13 @@ import { ProductsComponent } from "./products/products.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { AutocompleteComponent } from "./cv/autocomplete/autocomplete.component";
 import { SliderComponent } from "./rxjs/slider/slider.component";
-import { CvService } from "./cv/services/cv.service";
-import { CONSTANTES } from "src/config/const.config";
-import { FakeCvService } from "./cv/services/fake-cv.service";
 import { LoggerService } from "./services/logger.service";
 import { Logger2Service } from "./services/logger2.service";
 import { LoggersInjectionToken } from "./tokens/logger.injection-token";
 import { UUID_PROVIDER } from "./providers/uuid.provider";
-import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { MasterDetailsComponent } from './cv/master-details/master-details.component';
 import { MdComponent } from './cv/md/md.component';
+import { TodoModule } from "./todo/todo.module";
 
 @NgModule({
   declarations: [
@@ -86,7 +82,6 @@ import { MdComponent } from './cv/md/md.component';
     HighlightDirective,
     RainbowDirective,
     Btc2usdPipe,
-    TodoComponent,
     NavbarComponent,
     FrontComponent,
     AdminComponent,
@@ -99,7 +94,6 @@ import { MdComponent } from './cv/md/md.component';
     RhComponent,
     UserListComponent,
     ProductsComponent,
-    WeekTodoComponent,
     MasterDetailsComponent,
     MdComponent,
   ],
@@ -108,6 +102,7 @@ import { MdComponent } from './cv/md/md.component';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    TodoModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
