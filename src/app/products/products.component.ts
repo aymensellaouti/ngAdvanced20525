@@ -19,6 +19,19 @@ import { Settings } from "./dto/product-settings.dto";
 export class ProductsComponent {
   /* Todo : Faire le nécessaire pour créer le flux des produits à afficher */
   /* Tips : vous pouvez voir les différents imports non utilisés et vous en inspirer */
-  products$!: Observable<Product[]>;
+  setting: Settings = {limit: 12, skip: 0};
+  settings$ = new BehaviorSubject<Settings>(this.setting);
+  // {0 12} {12 12} {12 24}
+  products$: Observable<Product[]> = this.settings$.pipe(
+    // apiRespons1 apiResponse2 ....
+    // productsJdod ....
+    // [tousLesProductsEliJaw,productsJdod]
+    // 3awed lin ma 3ad 3andi chay
+  );
   constructor() {}
+
+  more() {
+    this.setting.skip += this.setting.limit;
+    this.settings$.next(this.setting);
+  }
 }
