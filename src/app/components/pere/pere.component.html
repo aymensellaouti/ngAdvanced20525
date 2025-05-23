@@ -1,3 +1,7 @@
 <p>pere works!</p>
 
-<app-fils (sendMessageToDad)="onSendMessageToDad($event)"></app-fils>
+<app-fils [user]="user" [hobby]="hobby" (sendMessageToDad)="onSendMessageToDad($event)"></app-fils>
+
+
+email : <input #emailInput [value]="user.email"  (keyup)="changeUser(emailInput.value)" type="text" class="form-control">
+hobby: <input [(ngModel)]="hobby" type="text" class="form-control">
