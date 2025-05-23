@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Route } from "@angular/router";
+import { RouterModule, Route, PreloadAllModules } from "@angular/router";
 import { TodoComponent } from "./todo/todo/todo.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
 import { ColorComponent } from "./components/color/color.component";
@@ -35,6 +35,13 @@ const routes: Route[] = [
     )
   },
   {
+    path: APP_ROUTES.cv,
+    loadChildren: () => import('./cv/cv.module'),
+    data: {
+      preload: true
+    }
+  },
+  {
     path: '',
     component: FrontComponent,
     children: [{ path: 'word', component: MiniWordComponent }],
@@ -48,7 +55,9 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

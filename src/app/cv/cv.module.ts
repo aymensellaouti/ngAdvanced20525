@@ -39,4 +39,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule
   ]
 })
-export class CvModule { }
+export default class CvModule { }

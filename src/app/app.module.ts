@@ -42,8 +42,6 @@ import { LoggerService } from "./services/logger.service";
 import { Logger2Service } from "./services/logger2.service";
 import { LoggersInjectionToken } from "./tokens/logger.injection-token";
 import { UUID_PROVIDER } from "./providers/uuid.provider";
-import { TodoModule } from "./todo/todo.module";
-import { CvModule } from "./cv/cv.module";
 
 @NgModule({
   declarations: [
@@ -78,7 +76,6 @@ import { CvModule } from "./cv/cv.module";
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    CvModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
