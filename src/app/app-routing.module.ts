@@ -28,7 +28,12 @@ const routes: Route[] = [
   //   children: [{ path: `:id`, component: DetailsCvComponent }],
   // },
   { path: APP_ROUTES.products, component: ProductsComponent },
-
+  {
+    path: APP_ROUTES.todo,
+    loadChildren: () => import('./todo/todo.module').then(
+      m => m.TodoModule
+    )
+  },
   {
     path: '',
     component: FrontComponent,

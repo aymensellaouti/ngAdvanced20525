@@ -78,7 +78,6 @@ import { CvModule } from "./cv/cv.module";
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    TodoModule,
     CvModule,
     AppRoutingModule,
     HttpClientModule,
