@@ -1,5 +1,7 @@
 <ol class="list-group">
-  <li *ngFor="let user of users" class="list-group-item">
-    {{user.name}} : {{user.age}} [{{ user.age | fibo }}]
-  </li>
+  @for (user of users; track user) {
+    <li class="list-group-item">
+      {{user.name}} : {{user.age}} [{{ user.age | fibo }}]
+    </li>
+  }
 </ol>

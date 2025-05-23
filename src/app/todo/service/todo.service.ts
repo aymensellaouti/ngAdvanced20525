@@ -9,9 +9,10 @@ let n = 1;
   providedIn: 'root',
 })
 export class TodoService {
+  private loggerService = inject(LoggerService);
+
   private todos: Todo[] = [];
   uuid = inject(UUIDInjectionToken);
-  constructor(private loggerService: LoggerService) {}
 
   /**
    * elle retourne la liste des todos

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CredentialsDto } from '../dto/credentials.dto';
 import { LoginResponseDto } from '../dto/login-response.dto';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +15,8 @@ export interface ConnectedUser {
   providedIn: 'root',
 })
 export class AuthService {
+  private http = inject(HttpClient);
+
   // Todo : Créer le flux de l'utilisateur connecté ConnectedUser | null
   #connectedUser$: BehaviorSubject<ConnectedUser | null> =
     new BehaviorSubject<ConnectedUser | null>(null);
@@ -28,7 +30,7 @@ export class AuthService {
     map((user) => !user)
   );
 
-  constructor(private http: HttpClient) {
+  constructor() {
     // A la construction de la classe
     // Je vérifie le localStorage
     const user = this.getConnectedUser();

@@ -1,11 +1,13 @@
 <p>master-detail-cv works!</p>
 <ol class="list-group">
-  <li *ngFor="let cv of cvs; let isOdd = odd" [ngClass]="{
+  @for (cv of cvs; track cv; let isOdd = $odd) {
+<li [ngClass]="{
       'list-group-item-primary': isOdd,
       'list-group-item-secondary': !isOdd
     }" class="list-group-item">
-    <!--     (selectCv)="forwardCv.emit(cv)"-->
-    <app-item  [cv]="cv"></app-item>
-  </li>
+      <!--     (selectCv)="forwardCv.emit(cv)"-->
+      <app-item  [cv]="cv"></app-item>
+    </li>
+  }
 </ol>
 <router-outlet></router-outlet>

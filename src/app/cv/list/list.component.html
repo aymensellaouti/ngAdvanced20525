@@ -1,9 +1,11 @@
 <ol class="list-group">
-  <li *ngFor="let cv of cvs; let isOdd = odd" [ngClass]="{
-      'list-group-item-primary': isOdd,
-      'list-group-item-secondary': !isOdd
-    }" class="list-group-item">
+  @for (cv of cvs; track cv; let isOdd = $odd) {
+  <li [ngClass]="{
+        'list-group-item-primary': isOdd,
+        'list-group-item-secondary': !isOdd
+      }" class="list-group-item">
     <!--     (selectCv)="forwardCv.emit(cv)"-->
-      <app-item  [cv]="cv" />
+    <app-item [cv]="cv" />
   </li>
+  }
 </ol>

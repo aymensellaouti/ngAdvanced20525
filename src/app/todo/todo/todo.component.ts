@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Todo } from '../model/todo';
 import { TodoService } from '../service/todo.service';
-import { NgFor } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,15 +10,17 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['./todo.component.css'],
     providers: [TodoService],
     standalone: true,
-    imports: [NgFor, FormsModule],
+    imports: [FormsModule],
 })
 export class TodoComponent {
+  private todoService = inject(TodoService);
+
   todos: Todo[] = [];
   /**
    * Le todo qui rerésente le formulaire d'ajout d'un todo
    */
   todo = new Todo();
-  constructor(private todoService: TodoService) {
+  constructor() {
     this.todos = this.todoService.getTodos();
   }
   addTodo() {

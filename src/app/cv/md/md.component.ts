@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ItemComponent } from '../item/item.component';
 
 @Component({
@@ -11,7 +11,7 @@ import { ItemComponent } from '../item/item.component';
     templateUrl: './md.component.html',
     styleUrls: ['./md.component.css'],
     standalone: true,
-    imports: [NgFor, NgClass, ItemComponent, RouterOutlet]
+    imports: [NgClass, ItemComponent, RouterOutlet]
 })
 export class MdComponent {
 cvs: Cv[] = [];

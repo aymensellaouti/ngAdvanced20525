@@ -3,26 +3,27 @@
   Name:
   <input type="text" class="form-control" formControlName="name" />
   <!-- <div *ngIf="form.get('name')?.errors && form.get('name')?.touched" class="alert alert-danger">
-    Ce champ est obligatoire
-  </div> -->
-  Firstname:
-  <input type="text" class="form-control" formControlName="firstname" /> Age:
-  <input type="text" class="form-control" formControlName="age" /> Cin:
-  <input type="text" class="form-control" formControlName="cin" />
+  Ce champ est obligatoire
+</div> -->
+Firstname:
+<input type="text" class="form-control" formControlName="firstname" /> Age:
+<input type="text" class="form-control" formControlName="age" /> Cin:
+<input type="text" class="form-control" formControlName="cin" />
   <!-- <div *ngIf="
       form.errors && form.errors['cinFirstCars'] && cin?.touched && age?.touched
     " class="alert alert-danger">
-    Cette Cin est invalide
-  </div> -->
-  Job: <input type="text" class="form-control" formControlName="job" /> Path:
-  <input type="text" class="form-control" formControlName="path" />
+Cette Cin est invalide
+</div> -->
+Job: <input type="text" class="form-control" formControlName="job" /> Path:
+<input type="text" class="form-control" formControlName="path" />
+@if (form.errors && form.errors['ageCin']) {
   <div
-    *ngIf="form.errors && form.errors['ageCin']"
     class="alert alert-danger">
     {{form.errors['ageCin']}}
   </div>
-  <button [disabled]="form.invalid" class="btn btn-primary" (click)="addCv()">
-    add cv
-  </button>
+}
+<button [disabled]="form.invalid" class="btn btn-primary" (click)="addCv()">
+  add cv
+</button>
 </form>
 <!-- {{form.errors | json}} -->
