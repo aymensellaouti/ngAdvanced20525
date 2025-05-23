@@ -27,37 +27,12 @@ const routes: Route[] = [
   //   component: MdComponent,
   //   children: [{ path: `:id`, component: DetailsCvComponent }],
   // },
-  {
-    path: 'cv/list',
-    component: MasterDetailsComponent,
-    resolve: {
-      cvs: cvsResolver
-    },
-    children: [
-      {
-        path: ':id',
-        component: DetailsCvComponent,
-      },
-    ],
-  },
-  {path: APP_ROUTES.products, component: ProductsComponent},
-  {
-    path: APP_ROUTES.cv,
-    children: [
-      {
-        path: '',
-        component: CvComponent,
-      },
-      { path: 'add', component: AddCvComponent, canActivate: [authGuard] },
-      { path: ':id', component: DetailsCvComponent },
-    ],
-  },
+  { path: APP_ROUTES.products, component: ProductsComponent },
+
   {
     path: '',
     component: FrontComponent,
-    children: [
-      { path: 'word', component: MiniWordComponent },
-    ],
+    children: [{ path: 'word', component: MiniWordComponent }],
   },
   {
     path: 'admin',
