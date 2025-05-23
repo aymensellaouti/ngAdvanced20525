@@ -43,6 +43,7 @@ import { Logger2Service } from "./services/logger2.service";
 import { LoggersInjectionToken } from "./tokens/logger.injection-token";
 import { UUID_PROVIDER } from "./providers/uuid.provider";
 import { UserElementsComponent } from './optimizationPattern/user-elements/user-elements.component';
+import { FiboPipe } from './pipes/fibo.pipe';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { UserElementsComponent } from './optimizationPattern/user-elements/user-
     UserListComponent,
     ProductsComponent,
     UserElementsComponent,
+    FiboPipe,
   ],
   imports: [
     BrowserModule,
