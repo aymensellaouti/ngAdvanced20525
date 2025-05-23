@@ -12,7 +12,7 @@ export class SomComponent {
   x = signal(3);
   y = signal(5);
   z = computed(() => this.x() + this.y());
-  doubleZ= computed(()=> 2 * this.z());
+  doubleZ= computed(()=> 2 * this.z())
   increment(value: WritableSignal<number>) {
     value.update((x) => x + 1);
   }
