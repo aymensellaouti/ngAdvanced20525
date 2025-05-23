@@ -18,6 +18,7 @@ import { MasterDetailsComponent } from "./cv/master-details/master-details.compo
 import { cvsResolver } from "./cv/resolver/cvs.resolver";
 import { canLeaveGuard } from "./guard/can-leave.guard";
 import { ProductsComponent } from "./products/products.component";
+import { CustomPreloadingStrategy } from "./Preloading strategies/custom.preloading-strategy";
 
 const routes: Route[] = [
   { path: 'login', component: LoginComponent },
@@ -56,7 +57,7 @@ const routes: Route[] = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules
+    preloadingStrategy: CustomPreloadingStrategy
   })],
   exports: [RouterModule],
 })
