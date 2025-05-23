@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ApplicationRef, Component, inject } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -6,5 +6,6 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
+  appRef = inject(ApplicationRef);
   title = "Starting Advanced Topics";
 }
