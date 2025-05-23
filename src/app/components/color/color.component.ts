@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: "app-color",
-  templateUrl: "./color.component.html",
-  styleUrls: ["./color.component.css"],
-  // changeDetection: ChangeDetectionStrategy.Default
+    selector: "app-color",
+    templateUrl: "./color.component.html",
+    styleUrls: ["./color.component.css"],
+    standalone: true,
 })
 export class ColorComponent implements OnInit {
   @Input() defaultColor = "red";

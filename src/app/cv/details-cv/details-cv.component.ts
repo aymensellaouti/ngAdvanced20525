@@ -6,11 +6,19 @@ import { ToastrService } from 'ngx-toastr';
 import { APP_ROUTES } from '../../../config/routes.config';
 import { AuthService } from '../../auth/services/auth.service';
 import { catchError, EMPTY, Observable, switchMap, tap } from 'rxjs';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { DefaultImagePipe } from '../pipes/default-image.pipe';
 
 @Component({
-  selector: 'app-details-cv',
-  templateUrl: './details-cv.component.html',
-  styleUrls: ['./details-cv.component.css'],
+    selector: 'app-details-cv',
+    templateUrl: './details-cv.component.html',
+    styleUrls: ['./details-cv.component.css'],
+    standalone: true,
+    imports: [
+        NgIf,
+        AsyncPipe,
+        DefaultImagePipe,
+    ],
 })
 export class DetailsCvComponent implements OnInit {
   cv$: Observable<Cv> = this.activatedRoute.params.pipe(

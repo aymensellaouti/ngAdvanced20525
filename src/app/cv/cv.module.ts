@@ -18,7 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
+    imports: [
+        CommonModule,
+        CvRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
         AddCvComponent,
         CvComponent,
         ListComponent,
@@ -30,13 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         DefaultImagePipe,
         MasterDetailsComponent,
         AutocompleteComponent,
-        MdComponent,
-  ],
-  imports: [
-    CommonModule,
-    CvRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+        MdComponent
+    ]
 })
 export default class CvModule { }

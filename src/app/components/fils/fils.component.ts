@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TestUser } from '../pere/pere.component';
 @Component({
-  selector: 'app-fils',
-  templateUrl: './fils.component.html',
-  styleUrls: ['./fils.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-fils',
+    templateUrl: './fils.component.html',
+    styleUrls: ['./fils.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class FilsComponent {
   /**

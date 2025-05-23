@@ -7,8 +7,9 @@ export const fibonnaci = (n: number): number => {
   return fibonnaci(n - 1) + fibonnaci(n - 2);
 };
 @Pipe({
-  name: 'fibo',
-  pure: true
+    name: 'fibo',
+    pure: true,
+    standalone: true
 })
 export class FiboPipe implements PipeTransform {
   @memo()
