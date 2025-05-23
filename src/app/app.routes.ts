@@ -20,7 +20,7 @@ import { canLeaveGuard } from "./guard/can-leave.guard";
 import { ProductsComponent } from "./products/products.component";
 import { CustomPreloadingStrategy } from "./Preloading strategies/custom.preloading-strategy";
 
-const routes: Route[] = [
+export const APPLICATION_ROUTES: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'rh', component: RhComponent },
   // {
@@ -28,7 +28,12 @@ const routes: Route[] = [
   //   component: MdComponent,
   //   children: [{ path: `:id`, component: DetailsCvComponent }],
   // },
-  { path: APP_ROUTES.products, component: ProductsComponent },
+  {
+    path: APP_ROUTES.products,
+    loadComponent: () => import('./products/products.component').then(
+      m => m.ProductsComponent
+    )
+  },
   {
     path: APP_ROUTES.todo,
     loadChildren: () => import('./todo/todo.module').then(
@@ -55,10 +60,3 @@ const routes: Route[] = [
   { path: '**', component: NF404Component },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: CustomPreloadingStrategy
-  })],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
