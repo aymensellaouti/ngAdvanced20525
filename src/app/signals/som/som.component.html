@@ -1,0 +1,8 @@
+<p>first-signal works!</p>
+<button (click)="increment(x)"  class="btn btn-success">X++</button>
+<button  (click)="decrement(x)" class="btn btn-danger">X--</button>
+<input type="number" [(ngModel)]="x" class="form-control">
+<input type="number" [(ngModel)]="y" class="form-control">
+{{ x() }} + {{ y() }} = {{ z() }} / {{doubleZ()}}
+
+<hr>
